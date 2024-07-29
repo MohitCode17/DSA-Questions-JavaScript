@@ -11,9 +11,11 @@ Here's how the Bubble Sort algorithm works step-by-step:
 
 const bubbleSort = function (arr) {
   let n = arr.length;
+  let swapped;
 
   // Outer loop for each pass
   for (let i = 0; i < n - 1; i++) {
+    swapped = false;
     // Inner loop for comparing and swapping adjacent elements
     for (let j = 0; j < n - 1 - i; j++) {
       // Compare adjacent elements
@@ -22,12 +24,18 @@ const bubbleSort = function (arr) {
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
+        swapped = true;
       }
+    }
+
+    if (!swapped) {
+      break;
     }
   }
 
   return arr;
 };
 
-console.log(bubbleSort([64, 25, 12, 22, 11]));
-console.log(bubbleSort([10, 2, -1, 15, 8]));
+console.log(bubbleSort([10, 12, 15, 18, 20]));
+// console.log(bubbleSort([64, 25, 12, 22, 11]));
+// console.log(bubbleSort([10, 2, -1, 15, 8]));
